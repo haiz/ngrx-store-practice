@@ -1,0 +1,14 @@
+<div>
+  <ul>
+    <li *ngFor="let person of people">
+      <p [class.text-green]="person.attending">
+        {{person.name}} - Guests: {{person.guests}}
+        <button type="button" (click)="addGuest.emit(person.id)">+</button>
+        <button type="button" *ngIf="person.guests" (click)="removeGuest.emit(person.id)">-</button>
+        Attending?
+        <input type="checkbox" [(ngModel)]="person.attending" (click)="toggleAttending.emit(person.id)">
+        <button type="button" (click)="removePerson.emit(person.id)">Delete</button>
+      </p>
+    </li>
+  </ul>
+</div>
