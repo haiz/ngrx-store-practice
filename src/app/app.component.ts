@@ -1,3 +1,4 @@
+import { RESET_STATE } from './states';
 import { ADD_PERSON } from './actions';
 import { id } from './id';
 import { LocalStoreService } from './shared/services/local-store.service';
@@ -35,7 +36,7 @@ export class AppComponent implements OnInit {
     this._store.dispatch({type: ADD_PERSON, payload: {id: id(), name: name}});
   }
 
-  updateFilter(filter) {
+  updateFilter(filter: string) {
     this._store.dispatch({type: filter});
   }
 
@@ -53,5 +54,9 @@ export class AppComponent implements OnInit {
 
   toggleAttending(id) {
     this._store.dispatch({type: TOGGLE_ATTENDING, payload: id});
+  }
+
+  resetParty() {
+    this._store.dispatch({type: RESET_STATE});
   }
 }

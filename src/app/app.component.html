@@ -1,4 +1,7 @@
 <h1>Party Planner</h1>
+<div>
+  <button type="button" (click)="resetParty()">Reset Party</button>
+</div>
 <party-stats
   [invited]="(model | async).total"
   [attending]="(model | async).attending"

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { StoreModule, INITIAL_STATE } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { PersonListComponent } from './person-list/person-list.component';
@@ -26,7 +27,8 @@ import { rootReducer } from './shared/reducers/index';
     BrowserModule,
     FormsModule,
     HttpModule,
-    StoreModule.provideStore(rootReducer)
+    StoreModule.provideStore(rootReducer),
+    StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
   providers: [
     LocalStoreService,
@@ -34,7 +36,6 @@ import { rootReducer } from './shared/reducers/index';
       provide: INITIAL_STATE,
       deps: [LocalStoreService],
       useFactory: lsService => {
-        console.log('dddd');
         return {people: lsService.getItem('people') || []};
       }
     }
