@@ -1,4 +1,9 @@
 <h1>Party Planner</h1>
+<party-stats
+  [invited]="(model | async).total"
+  [attending]="(model | async).attending"
+  [guests]="(model | async).guests">
+</party-stats>
 <filter-select
   (updateFilter)="updateFilter($event)">
 </filter-select>
@@ -6,7 +11,7 @@
   (addPerson)="addPerson($event)">
 </person-input>
 <person-list 
-  [people]="people | async"
+  [people]="(model | async).people"
   (addGuest)="addGuest($event)"
   (removeGuest)="removeGuest($event)"
   (removePerson)="removePerson($event)"
